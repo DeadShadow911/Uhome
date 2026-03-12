@@ -4,11 +4,12 @@ import { Hero } from "@/components/sections/Hero";
 export const metadata: Metadata = {
   title: "UHome — Ремонт квартир и домов под ключ в Гродно",
   description:
-    "Профессиональный ремонт квартир и частных домов под ключ в Гродно. Отделка с гарантией 5 лет. Рассчитайте стоимость онлайн.",
+    "Профессиональный ремонт квартир и частных домов под ключ в Гродно. Отделка с гарантией 2 года. Рассчитайте стоимость онлайн.",
 };
+import { AdvantagesSection } from "@/components/sections/AdvantagesSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { PortfolioSection } from "@/components/sections/PortfolioSection";
-import { CalculatorSection } from "@/components/sections/CalculatorSection";
+import { QuickEstimateSection } from "@/components/sections/QuickEstimateSection";
 import { ProcessSection } from "@/components/sections/ProcessSection";
 import { ReviewsSection } from "@/components/sections/ReviewsSection";
 import { CTASection } from "@/components/sections/CTASection";
@@ -18,9 +19,10 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       <Hero />
+      <AdvantagesSection />
       <ServicesSection />
       <PortfolioSection />
-      <CalculatorSection />
+      <QuickEstimateSection />
       <ProcessSection />
       <ReviewsSection />
       <CTASection />

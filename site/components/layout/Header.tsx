@@ -14,14 +14,13 @@ const navItems = [
     children: [
       { label: "Ремонт квартир", href: "/uslugi/remont-kvartir" },
       { label: "Ремонт домов", href: "/uslugi/remont-domov" },
-      { label: "Дизайн-проект", href: "/uslugi/dizajn-proekt" },
       { label: "Черновая отделка", href: "/uslugi/chernovaya-otdelka" },
       { label: "Чистовая отделка", href: "/uslugi/chistovaya-otdelka" },
       { label: "Капитальный ремонт", href: "/uslugi/kapitalnyj-remont" },
     ],
   },
   { label: "Портфолио", href: "/portfolio" },
-  { label: "Калькулятор", href: "/kalkulyator" },
+  { label: "Быстрый расчёт", href: "/kalkulyator" },
   { label: "О нас", href: "/o-kompanii" },
   { label: "Блог", href: "/blog" },
   { label: "Контакты", href: "/kontakty" },
@@ -106,7 +105,7 @@ export function Header() {
           <Button asChild size="sm" variant="primary" className="gap-2">
             <Link href="/kalkulyator">
               <Calculator className="size-4" />
-              Рассчитать стоимость
+              Быстрый расчёт
             </Link>
           </Button>
           <a
@@ -115,6 +114,15 @@ export function Header() {
           >
             <Phone className="size-4" />
             <span className="font-medium">{siteConfig.phone}</span>
+          </a>
+          <a
+            href={siteConfig.socials.telegram}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full bg-cta p-2 text-white shadow-md transition hover:bg-cta-hover hover:shadow-lg active:scale-[0.98]"
+            aria-label="Написать в Telegram"
+          >
+            <img src="/icons/telegram.svg" alt="" className="size-5 brightness-0 invert" aria-hidden />
           </a>
         </div>
 
@@ -167,7 +175,7 @@ export function Header() {
               <Button asChild variant="primary" className="min-h-[48px] w-full gap-2">
                 <Link href="/kalkulyator" onClick={() => setMobileOpen(false)}>
                   <Calculator className="size-4" />
-                  Рассчитать стоимость
+                  Быстрый расчёт
                 </Link>
               </Button>
               <a

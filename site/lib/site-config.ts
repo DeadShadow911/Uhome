@@ -12,10 +12,12 @@ export const siteConfig = {
     contacts: process.env.NEXT_PUBLIC_FORMSPREE_CONTACTS || "",
     cta: process.env.NEXT_PUBLIC_FORMSPREE_CTA || "",
     quiz: process.env.NEXT_PUBLIC_FORMSPREE_QUIZ || "",
+    calculator: process.env.NEXT_PUBLIC_FORMSPREE_CALCULATOR || process.env.NEXT_PUBLIC_FORMSPREE_CTA || "",
   },
   stats: {
     yearsExperience: 12,
     projectsCount: 70,
-    warrantyYears: 5,
+    warrantyYears: 2,
+    warrantyLabel: "2 года",
   },
 } as const;

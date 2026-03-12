@@ -35,6 +35,8 @@ const config: Config = {
       colors: {
         primary: "#0A0A0A",
         accent: "#0A0A0A",
+        cta: "#E85D04",
+        "cta-hover": "#D14D03",
         secondary: "#171717",
         background: "#FAFAFA",
         surface: "#FFFFFF",

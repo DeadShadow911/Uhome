@@ -26,7 +26,7 @@ const heroSlides = [
     image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&h=1080&fit=crop",
     title: "Строительство домов",
     description:
-      "Каркасные дома и коттеджи из блоков под ключ. Собственная бригада, контроль качества на каждом этапе, гарантия 5 лет.",
+      "Каркасные дома и коттеджи из блоков под ключ. Собственная бригада, контроль качества на каждом этапе, гарантия 2 года.",
     ctaText: "Посмотреть пакеты",
     ctaHref: "/kalkulyator?type=house",
     secondaryCtaText: "О компании",
@@ -34,9 +34,9 @@ const heroSlides = [
   },
   {
     image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1920&h=1080&fit=crop",
-    title: "Дизайн и качественная отделка",
+    title: "Качественная отделка",
     description:
-      "Индивидуальные дизайн-проекты и премиальная отделка. 12 лет на рынке, 500+ реализованных объектов в Гродно и области.",
+      "Премиальные материалы и аккуратная работа. 12 лет на рынке, 70+ реализованных объектов в Гродно и области.",
     ctaText: "Заказать звонок",
     ctaHref: "/kontakty",
     secondaryCtaText: "Услуги",
@@ -47,7 +47,7 @@ const heroSlides = [
 const stats = [
   { value: `${siteConfig.stats.projectsCount}+`, label: "объектов" },
   { value: `${siteConfig.stats.yearsExperience} лет`, label: "опыта" },
-  { value: `${siteConfig.stats.warrantyYears} лет`, label: "гарантия" },
+  { value: siteConfig.stats.warrantyLabel, label: "гарантия" },
 ];
 
 export function Hero() {
@@ -88,18 +88,18 @@ export function Hero() {
                   </p>
                   <div className="mt-5 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:gap-4 md:justify-center">
                       <QuizDialog>
-                        <Button size="lg" variant="primary" className="w-full bg-white text-primary hover:bg-white/90 sm:w-auto">
+                        <Button size="lg" variant="primary" className="w-full sm:w-auto">
                           Подобрать решение
                         </Button>
                       </QuizDialog>
-                      <Button asChild size="lg" variant="secondary" className="w-full border-white text-white hover:bg-white hover:text-primary sm:w-auto">
+                      <Button asChild size="lg" variant="secondary" className="w-full border-white text-white hover:bg-white hover:text-cta sm:w-auto">
                         <Link href={slide.ctaHref}>{slide.ctaText}</Link>
                       </Button>
                       <Button
                         asChild
                         size="lg"
                         variant="secondary"
-                        className="w-full border-white text-white hover:bg-white hover:text-primary sm:w-auto"
+                        className="w-full border-white text-white hover:bg-white hover:text-cta sm:w-auto"
                       >
                         <Link href={slide.secondaryCtaHref}>{slide.secondaryCtaText}</Link>
                       </Button>

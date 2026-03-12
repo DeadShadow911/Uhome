@@ -28,7 +28,7 @@ export default function OKompaniiPage() {
           </div>
           <div className="rounded-xl border border-primary/10 bg-white p-6 text-center">
             <Shield className="mx-auto size-12 text-accent" />
-            <h3 className="mt-4 font-heading font-semibold text-primary">{siteConfig.stats.warrantyYears} лет</h3>
+            <h3 className="mt-4 font-heading font-semibold text-primary">{siteConfig.stats.warrantyLabel}</h3>
             <p className="text-sm text-text-muted">гарантии</p>
           </div>
         </div>

@@ -71,7 +71,7 @@ export function CTASection() {
                 required
                 className="w-full min-h-[48px] rounded-lg border border-white/20 bg-white/10 px-4 py-3 text-white placeholder:text-white/60"
               />
-              <Button type="submit" variant="primary" size="lg" className="w-full gap-2 bg-white text-primary hover:bg-white/90">
+              <Button type="submit" variant="primary" size="lg" className="w-full gap-2">
                 <Send className="size-4" />
                 Заказать звонок
               </Button>

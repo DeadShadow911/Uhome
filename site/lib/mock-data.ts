@@ -12,12 +12,6 @@ export const services = [
     icon: "Building",
   },
   {
-    slug: "dizajn-proekt",
-    title: "Дизайн-проект",
-    description: "Разработка индивидуального дизайн-проекта интерьера",
-    icon: "Palette",
-  },
-  {
     slug: "chernovaya-otdelka",
     title: "Черновая отделка",
     description: "Стяжка, штукатурка, электропроводка, сантехника",
@@ -37,29 +31,115 @@ export const services = [
   },
 ];
 
-export const portfolioItems = [
+export const portfolioItems: Array<{
+  slug: string;
+  title: string;
+  type: string;
+  area: string;
+  image: string;
+  images?: string[];
+  description?: string;
+  details?: string[];
+  beforeAfter?: boolean;
+  beforeImage?: string;
+  intro?: string;
+  location?: string;
+  rooms?: string;
+  style?: string;
+  sections?: Array<{ title: string; content: string }>;
+}> = [
   {
     slug: "kvartira-sovremennyj-stil",
     title: "Квартира в современном стиле",
     type: "Косметический ремонт",
     area: "65 м²",
-    image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&h=800&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&h=800&fit=crop",
+    ],
+    intro: "Трёхкомнатная квартира в новостройке с косметическим ремонтом в светлых тонах. Переклейка обоев, обновление напольного покрытия и плинтусов, покраска потолков. Пространство получилось уютным и функциональным.",
+    location: "г. Гродно",
+    rooms: "3",
+    style: "Современный",
+    description: "Полный косметический ремонт трёхкомнатной квартиры в новостройке.",
+    details: ["Срок: 3 недели", "Материалы: ламинат, обои под покраску"],
+    sections: [
+      {
+        title: "Гостиная",
+        content: "Основное жилое пространство решено в нейтральной гамме: светло-серые стены, ламинат под натуральное дерево. Один акцентный угол выделен обоями с геометрическим рисунком. Встроенные полки над диваном добавляют функциональности без перегруза. Освещение — центральная люстра и точечные светильники.",
+      },
+      {
+        title: "Кухня",
+        content: "Кухня объединена с гостиной визуально за счёт единого напольного покрытия. Фасады — белый матовый пластик, столешница — искусственный камень. Вытяжка встроена в навесной шкаф. Рабочая зона освещена светодиодной лентой под верхними шкафами.",
+      },
+      {
+        title: "Спальня и санузел",
+        content: "В спальне — те же обои под покраску и ламинат. Минималистичная мебель, прикроватные тумбы с верхним освещением. В санузле — плитка светлых оттенков, душевая кабина, подвесной унитаз. Все материалы влагостойкие, за ними легко ухаживать.",
+      },
+    ],
     beforeAfter: true,
+    beforeImage: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&h=800&fit=crop",
   },
   {
     slug: "dom-pod-kluch",
     title: "Частный дом под ключ",
     type: "Капитальный ремонт",
     area: "180 м²",
-    image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1200&h=800&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1600047509782-20d19109fde8?w=1200&h=800&fit=crop",
+    ],
+    intro: "Строительство и отделка частного дома из газоблоков под ключ. Черновая и чистовая отделка, разводка коммуникаций, установка окон и дверей. Объект сдан с гарантией.",
+    location: "Гродненская область",
+    rooms: "6",
+    style: "Классика",
+    description: "Строительство и отделка частного дома из газоблоков.",
+    details: ["Срок: 4 месяца", "Материалы: газоблок, ламинат, плитка"],
+    sections: [
+      {
+        title: "Экстерьер и фасад",
+        content: "Дом из газоблоков с фасадной отделкой под камень. Окна ПВХ, входная группа с тамбуром. Кровля — металлочерепица, организованный водосток.",
+      },
+      {
+        title: "Внутренняя отделка",
+        content: "Во всех жилых помещениях — штукатурка, обои и ламинат. В санузлах и прихожей — плитка. Разводка электрики и сантехники выполнена с учётом планировки. Установлены двери, сантехприборы, освещение.",
+      },
+    ],
     beforeAfter: true,
+    beforeImage: "https://images.unsplash.com/photo-1503387762-592dea58f717?w=1200&h=800&fit=crop",
   },
   {
     slug: "ofis-minimalizm",
     title: "Офис в стиле минимализм",
     type: "Дизайнерский ремонт",
     area: "120 м²",
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&h=800&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=1200&h=800&fit=crop",
+    ],
+    intro: "Офисное помещение с лаконичной отделкой в светлых тонах. Напольная плитка, натяжные потолки, разводка электрики под рабочие места. Пространство получилось функциональным и визуально лёгким.",
+    location: "г. Гродно",
+    rooms: "1",
+    style: "Минимализм",
+    description: "Ремонт офисного помещения с индивидуальной планировкой.",
+    details: ["Срок: 2 месяца", "Материалы: плитка, гипсокартон, натяжной потолок"],
+    sections: [
+      {
+        title: "Рабочая зона",
+        content: "Открытое пространство с разводкой электрики под каждое рабочее место. Плитка на полу — практично и долговечно. Натяжные потолки с точечным освещением создают ровный свет без теней. Стены — светлая краска, нейтральный фон для работы.",
+      },
+      {
+        title: "Переговорная и ресепшн",
+        content: "Отдельная переговорная комната с акустической обработкой. Зона ресепшн у входа — первое впечатление для гостей. Везде выдержана единая светлая палитра.",
+      },
+    ],
     beforeAfter: false,
   },
   {
@@ -67,15 +147,58 @@ export const portfolioItems = [
     title: "Евроремонт 3-комнатной",
     type: "Евроремонт",
     area: "95 м²",
-    image: "https://images.unsplash.com/photo-1583847268964?w=600&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&h=800&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1583847268964-b28dc63f27cc?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&h=800&fit=crop",
+    ],
+    intro: "Евроремонт квартиры во вторичке: замена электропроводки и сантехники, выравнивание стен и полов, чистовая отделка. Установлены качественные двери и сантехприборы. Пространство полностью обновлено.",
+    location: "г. Гродно",
+    rooms: "3",
+    style: "Евроремонт",
+    description: "Евроремонт квартиры во вторичке.",
+    details: ["Срок: 2,5 месяца", "Материалы: штукатурка, ламинат, плитка"],
+    sections: [
+      {
+        title: "Черновые работы",
+        content: "Полная замена электропроводки и сантехнических труб. Штукатурка стен по маякам, стяжка пола. Разводка под розетки, выключатели и освещение в каждой комнате.",
+      },
+      {
+        title: "Чистовая отделка",
+        content: "Стены — обои и краска. Полы — ламинат в жилых комнатах, плитка в санузле и кухне. Потолки — шпаклёвка и покраска. Установлены межкомнатные двери, сантехника, розетки и светильники.",
+      },
+    ],
     beforeAfter: true,
+    beforeImage: "https://images.unsplash.com/photo-1503387762-592dea58f717?w=1200&h=800&fit=crop",
   },
   {
     slug: "kottedzh-klassika",
     title: "Коттедж в классическом стиле",
     type: "Строительство под ключ",
     area: "250 м²",
-    image: "https://images.unsplash.com/photo-1600047509782?w=600&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1600047509782-20d19109fde8?w=1200&h=800&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1600047509782-20d19109fde8?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&h=800&fit=crop",
+    ],
+    intro: "Кирпичный коттедж с отделкой в классическом стиле. Фасадная отделка натуральным камнем, внутренние работы, благоустройство территории. Дом сдан под ключ.",
+    location: "Гродненская область",
+    rooms: "8",
+    style: "Классика",
+    description: "Строительство кирпичного коттеджа с отделкой в классическом стиле.",
+    details: ["Срок: 6 месяцев", "Материалы: кирпич, натуральный камень"],
+    sections: [
+      {
+        title: "Экстерьер",
+        content: "Фасад из клинкерного кирпича с элементами натурального камня. Большие окна, крыльцо с колоннами. Кровля — натуральная черепица. Вокруг дома — отмостка и начальный этап благоустройства.",
+      },
+      {
+        title: "Интерьер",
+        content: "Внутренняя планировка — гостиная, кухня-столовая, несколько спален, кабинет, санузлы. Отделка — штукатурка, обои, паркетная доска и плитка. Классические элементы — молдинги, лепнина на потолках.",
+      },
+    ],
     beforeAfter: false,
   },
   {
@@ -83,8 +206,30 @@ export const portfolioItems = [
     title: "Студия для молодой семьи",
     type: "Дизайнерский ремонт",
     area: "42 м²",
-    image: "https://images.unsplash.com/photo-1484154218962?w=600&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1200&h=800&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&h=800&fit=crop",
+    ],
+    intro: "Компактная студия с продуманной планировкой: зонирование гостиной и спальни, встроенная кухня, аккуратный санузел. Светлая отделка визуально расширяет пространство. Идеально для молодой семьи.",
+    location: "г. Гродно",
+    rooms: "1",
+    style: "Скандинавский",
+    description: "Студия с продуманной планировкой для молодой семьи.",
+    details: ["Срок: 1,5 месяца", "Материалы: МДФ-панели, ламинат, плитка"],
+    sections: [
+      {
+        title: "Гостиная и кухня",
+        content: "Объединённое пространство с чётким зонированием. Кухня — компактный гарнитур вдоль стены, встроенная техника. Гостиная — диван, столик, полки для хранения. Светлые стены и ламинат создают ощущение простора.",
+      },
+      {
+        title: "Спальная зона и санузел",
+        content: "Спальня отделена лёгкой перегородкой или шкафом. Кровать, тумбочки, минимальный набор мебели. Санузел — плитка, душевая кабина, подвесной унитаз. Всё компактно, но функционально.",
+      },
+    ],
     beforeAfter: true,
+    beforeImage: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&h=800&fit=crop",
   },
 ];
 
@@ -123,6 +268,13 @@ export const reviews = [
   },
 ];
 
+import {
+  remontKvartirGrodnoBlocks,
+  type BlogContentBlock,
+} from "@/data/remont-kvartir-grodno-article";
+
+export type { BlogContentBlock };
+
 export const blogPosts: Array<{
   slug: string;
   title: string;
@@ -131,7 +283,17 @@ export const blogPosts: Array<{
   date: string;
   image: string;
   content?: string[];
+  contentBlocks?: BlogContentBlock[];
 }> = [
+  {
+    slug: "remont-kvartir-grodno",
+    title: "Ремонт квартиры в Гродно под ключ: что входит, этапы, как выбрать подрядчика",
+    excerpt: "Полный гайд по ремонту квартир в Гродно: этапы работ, виды ремонта, сроки, чек-лист выбора компании и частые ошибки. Без воды и приукрашиваний.",
+    category: "Советы",
+    date: "2026-03-12",
+    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&h=400&fit=crop",
+    contentBlocks: remontKvartirGrodnoBlocks,
+  },
   {
     slug: "skolko-stoit-remont-kvartiry-v-grodno",
     title: "Сколько стоит ремонт квартиры в Гродно в 2025 году",

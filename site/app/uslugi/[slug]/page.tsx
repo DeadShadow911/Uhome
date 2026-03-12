@@ -57,7 +57,7 @@ export default async function UslugaPage({ params }: Props) {
 
         <div className="mt-8 flex flex-wrap gap-4 sm:mt-12">
           <Button asChild variant="primary">
-            <Link href="/kalkulyator">Рассчитать стоимость</Link>
+            <Link href="/kalkulyator">Быстрый расчёт</Link>
           </Button>
           <Button asChild variant="secondary">
             <Link href="/kontakty">Заказать звонок</Link>

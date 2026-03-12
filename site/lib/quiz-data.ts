@@ -13,7 +13,6 @@ export const quizSteps = [
     options: [
       { value: "remont-kvartir", label: "Ремонт квартир" },
       { value: "remont-domov", label: "Ремонт домов" },
-      { value: "dizajn-proekt", label: "Дизайн-проект" },
       { value: "chernovaya-otdelka", label: "Черновая отделка" },
       { value: "chistovaya-otdelka", label: "Чистовая отделка" },
       { value: "kapitalnyj-remont", label: "Капитальный ремонт" },

@@ -23,7 +23,7 @@ export function ServicesSection() {
   const swiperRef = useRef<SwiperType | null>(null);
 
   return (
-    <section className="py-10 sm:py-16 md:py-24">
+    <section className="py-10 sm:py-16 md:py-24 bg-primary text-white">
       <div className="container mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 1, y: 0 }}
@@ -32,10 +32,10 @@ export function ServicesSection() {
           className="mb-12 flex flex-col items-center gap-4 sm:flex-row sm:justify-between sm:items-end"
         >
           <div className="text-center sm:text-left">
-            <h2 className="font-heading text-2xl font-bold text-primary sm:text-3xl md:text-4xl">
+            <h2 className="font-heading text-2xl font-bold text-white sm:text-3xl md:text-4xl">
               Услуги
             </h2>
-            <p className="mt-4 max-w-2xl text-text-muted">
+            <p className="mt-4 max-w-2xl text-white/80">
               Полный спектр работ по ремонту и отделке квартир и частных домов
             </p>
           </div>
@@ -43,7 +43,7 @@ export function ServicesSection() {
             <button
               type="button"
               aria-label="Предыдущая услуга"
-              className="flex size-11 items-center justify-center rounded-full border border-primary/20 bg-white text-primary shadow-sm transition hover:border-primary/40 hover:bg-primary/5"
+              className="flex size-11 items-center justify-center rounded-full border border-white/30 bg-white/10 text-white shadow-sm transition hover:border-white/50 hover:bg-white/20"
               onClick={() => swiperRef.current?.slidePrev()}
             >
               <ChevronLeft className="size-6" />
@@ -51,7 +51,7 @@ export function ServicesSection() {
             <button
               type="button"
               aria-label="Следующая услуга"
-              className="flex size-11 items-center justify-center rounded-full border border-primary/20 bg-white text-primary shadow-sm transition hover:border-primary/40 hover:bg-primary/5"
+              className="flex size-11 items-center justify-center rounded-full border border-white/30 bg-white/10 text-white shadow-sm transition hover:border-white/50 hover:bg-white/20"
               onClick={() => swiperRef.current?.slideNext()}
             >
               <ChevronRight className="size-6" />
@@ -77,19 +77,19 @@ export function ServicesSection() {
                   initial={{ opacity: 1, y: 0 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  whileHover={{ y: -4, boxShadow: "0 20px 40px -15px rgba(26,26,46,0.2)" }}
-                  className="group relative h-full rounded-xl border border-primary/10 bg-white p-4 transition-shadow sm:p-6"
+                  whileHover={{ y: -4, boxShadow: "0 20px 40px -15px rgba(0,0,0,0.4)" }}
+                  className="group relative h-full rounded-xl border border-white/20 bg-white/5 p-4 transition-shadow sm:p-6"
                 >
-                  <div className="mb-4 inline-flex rounded-lg bg-primary/10 p-3 text-primary">
+                  <div className="mb-4 inline-flex rounded-lg bg-white/20 p-3 text-white">
                     <Icon className="size-8" />
                   </div>
-                  <h3 className="font-heading text-xl font-semibold text-primary">
+                  <h3 className="font-heading text-xl font-semibold text-white">
                     {service.title}
                   </h3>
-                  <p className="mt-2 text-sm text-text-muted">{service.description}</p>
+                  <p className="mt-2 text-sm text-white/80">{service.description}</p>
                   <Link
                     href={`/uslugi/${service.slug}`}
-                    className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
+                    className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-white hover:underline"
                   >
                     Подробнее
                     <ChevronRight className="size-4" />
@@ -106,7 +106,7 @@ export function ServicesSection() {
           viewport={{ once: true }}
           className="mt-12 flex justify-center"
         >
-          <Button asChild variant="secondary">
+          <Button asChild variant="secondary" className="border-white/30 bg-white/10 text-white hover:bg-white hover:text-primary">
             <Link href="/uslugi">Все услуги</Link>
           </Button>
         </motion.div>

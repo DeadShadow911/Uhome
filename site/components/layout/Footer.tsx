@@ -6,7 +6,6 @@ const footerLinks = {
   services: [
     { label: "Ремонт квартир", href: "/uslugi/remont-kvartir" },
     { label: "Ремонт домов", href: "/uslugi/remont-domov" },
-    { label: "Дизайн-проект", href: "/uslugi/dizajn-proekt" },
     { label: "Капитальный ремонт", href: "/uslugi/kapitalnyj-remont" },
   ],
   company: [
@@ -18,7 +17,7 @@ const footerLinks = {
   info: [
     { label: "Контакты", href: "/kontakty" },
     { label: "FAQ", href: "/faq" },
-    { label: "Калькулятор", href: "/kalkulyator" },
+    { label: "Быстрый расчёт", href: "/kalkulyator" },
     { label: "Политика конфиденциальности", href: "/politika-konfidencialnosti" },
   ],
 };
@@ -38,7 +37,7 @@ export function Footer() {
               UHome
             </Link>
             <p className="mt-4 text-sm text-white/80">
-              Профессиональный ремонт квартир и частных домов под ключ. {siteConfig.stats.yearsExperience} лет опыта, {siteConfig.stats.projectsCount}+ объектов, гарантия {siteConfig.stats.warrantyYears} лет.
+              Профессиональный ремонт квартир и частных домов под ключ. {siteConfig.stats.yearsExperience} лет опыта, {siteConfig.stats.projectsCount}+ объектов, гарантия {siteConfig.stats.warrantyLabel}.
             </p>
             <div className="mt-6 flex flex-col gap-3">
               <a
