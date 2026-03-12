@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    overflow-x: hidden;
+  }
+  body {
+    @apply bg-background text-text-primary antialiased;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior-y: none;
+  }
+  /* Отступ снизу для sticky CTA на мобильных */
+  @media (max-width: 767px) {
+    body {
+      padding-bottom: calc(70px + env(safe-area-inset-bottom, 0px));
+    }
+  }
+  /* Safe area утилиты для iPhone Dynamic Island, notch, Samsung punch-hole */
+  .pt-safe {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  .pl-safe {
+    padding-left: env(safe-area-inset-left, 0px);
+  }
+  .pr-safe {
+    padding-right: env(safe-area-inset-right, 0px);
+  }
+  /* Sticky CTA: отступ над home indicator (iPhone) */
+  .sticky-cta-wrap {
+    padding-bottom: max(12px, env(safe-area-inset-bottom, 0px));
+  }
+  /* Минимальный размер 16px для input — предотвращает zoom на iOS при фокусе */
+  input, select, textarea {
+    font-size: 16px;
+  }
+  /* Range input — удобная область для тапа на мобильных */
+  input[type="range"] {
+    min-height: 36px;
+    padding: 8px 0;
+  }
+  @media (min-width: 768px) {
+    input, select, textarea {
+      font-size: inherit;
+    }
+  }
+}
+
+/* Swiper */
+.services-swiper .swiper-button-prev,
+.services-swiper .swiper-button-next,
+.reviews-swiper .swiper-button-prev,
+.reviews-swiper .swiper-button-next {
+  color: #0A0A0A;
+}
+.services-swiper .swiper-button-prev,
+.services-swiper .swiper-button-next {
+  min-width: 44px;
+  min-height: 44px;
+}
+.services-swiper .swiper-button-prev::after,
+.services-swiper .swiper-button-next::after,
+.reviews-swiper .swiper-button-prev::after,
+.reviews-swiper .swiper-button-next::after {
+  font-size: 1.5rem;
+}
+.reviews-swiper .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+}
+.reviews-swiper .swiper-pagination-bullet-active {
+  background: #0A0A0A;
+}
+/* Hero: фиксированная высота для Swiper и слайдов */
+.hero-section .swiper,
+.hero-section .swiper-slide {
+  height: 100%;
+}
+.hero-section .swiper-slide > div {
+  height: 100%;
+}
+/* Hero pagination - white on dark overlay */
+.hero-section .swiper-pagination-bullet {
+  background: rgba(255,255,255,0.5);
+}
+.hero-section .swiper-pagination-bullet-active {
+  background: #fff;
+}

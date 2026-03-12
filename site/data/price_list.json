@@ -1,0 +1,48 @@
+{
+  "usdRate": 3.05,
+  "defaultMarkup": 0.35,
+  "apartmentRenovation": {
+    "demolition": [
+      { "name": "Демонтаж обоев", "unit": "м²", "priceByn": 3 },
+      { "name": "Демонтаж старых покрытий пола", "unit": "м²", "priceByn": 8 },
+      { "name": "Демонтаж перегородок (лёгких)", "unit": "м²", "priceByn": 15 },
+      { "name": "Штробление под проводку", "unit": "м/п", "priceByn": 8 }
+    ],
+    "walls": {
+      "plaster": { "name": "Штукатурка стен до 2 см", "unit": "м²", "priceByn": 18 },
+      "putty": { "name": "Шпаклёвка стен под покраску", "unit": "м²", "priceByn": 12 },
+      "paint": { "name": "Покраска стен (2 слоя)", "unit": "м²", "priceByn": 9 },
+      "wallpaper": { "name": "Обои под покраску + покраска", "unit": "м²", "priceByn": 14 }
+    },
+    "floor": {
+      "screed": { "name": "Стяжка пола 3-5 см", "unit": "м²", "priceByn": 18 },
+      "laminate": { "name": "Укладка ламината", "unit": "м²", "priceByn": 7 },
+      "laminateNoScreed": { "name": "Укладка ламината (без стяжки)", "unit": "м²", "priceByn": 5 },
+      "tile": { "name": "Укладка плитки на пол", "unit": "м²", "priceByn": 27 },
+      "parquet": { "name": "Укладка паркетной доски", "unit": "м²", "priceByn": 10 },
+      "tileBathroom": { "name": "Укладка плитки в санузле", "unit": "м²", "priceByn": 27 }
+    },
+    "ceiling": {
+      "putty": { "name": "Шпаклёвка потолка", "unit": "м²", "priceByn": 15 },
+      "paint": { "name": "Покраска потолка", "unit": "м²", "priceByn": 9 },
+      "stretch": { "name": "Натяжной потолок", "unit": "м²", "priceByn": 35 }
+    },
+    "systems": {
+      "electricPoint": { "name": "Электрика (розетка/выключатель)", "unit": "шт.", "priceByn": 30 },
+      "electricPanel": { "name": "Щиток электрический", "unit": "шт.", "priceByn": 150, "perApartment": true },
+      "plumbingKit": { "name": "Сантехника (унитаз, раковина, смеситель)", "unit": "комплект", "priceByn": 360 },
+      "plumbingReplacement": { "name": "Замена стояков и разводки", "unit": "м/п", "priceByn": 80 }
+    },
+    "doors": { "name": "Межкомнатная дверь с установкой", "unit": "шт.", "priceByn": 90 },
+    "plinth": { "name": "Плинтус МДФ с установкой", "unit": "м/п", "priceByn": 6 }
+  },
+  "houseConstruction": {
+    "packages": [
+      { "id": "frame", "name": "Каркасный дом — коробка", "pricePerSqm": 700, "description": "от, без отделки" },
+      { "id": "blocks_box", "name": "Дом из блоков — коробка", "pricePerSqm": 950, "description": "от, без отделки" },
+      { "id": "blocks_full", "name": "Дом из блоков — под ключ", "pricePerSqm": 1800, "description": "от, с отделкой" },
+      { "id": "brick_box", "name": "Кирпичный дом — коробка", "pricePerSqm": 1200, "description": "от, без отделки" },
+      { "id": "brick_full", "name": "Кирпичный дом — под ключ", "pricePerSqm": 2400, "description": "от, с отделкой" }
+    ]
+  }
+}
