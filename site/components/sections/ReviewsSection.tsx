@@ -10,7 +10,7 @@ import "swiper/css/pagination";
 
 export function ReviewsSection() {
   return (
-    <section className="py-10 sm:py-16 md:py-24">
+    <section className="bg-background py-10 sm:py-16 md:py-24">
       <div className="container mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 1, y: 0 }}

@@ -19,6 +19,36 @@ const iconMap = {
   Wrench,
 };
 
+function ServiceCard({
+  service,
+  Icon,
+}: {
+  service: (typeof services)[0];
+  Icon: React.ComponentType<{ className?: string }>;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 1, y: 0 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      whileHover={{ y: -4, boxShadow: "0 20px 40px -15px rgba(0,0,0,0.4)" }}
+      className="group relative flex h-full flex-col rounded-xl border border-white/20 bg-white/5 p-4 transition-shadow sm:p-6"
+    >
+      <div className="mb-4 inline-flex rounded-lg bg-white/20 p-3 text-white">
+        <Icon className="size-8" />
+      </div>
+      <h3 className="font-heading text-xl font-semibold text-white">
+        {service.title}
+      </h3>
+      <p className="mt-2 flex-1 text-sm text-white/80">{service.description}</p>
+      <span className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-white group-hover:underline">
+        Подробнее
+        <ChevronRight className="size-4" />
+      </span>
+    </motion.div>
+  );
+}
+
 export function ServicesSection() {
   const swiperRef = useRef<SwiperType | null>(null);
 
@@ -29,17 +59,17 @@ export function ServicesSection() {
           initial={{ opacity: 1, y: 0 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-12 flex flex-col items-center gap-4 sm:flex-row sm:justify-between sm:items-end"
+          className="mb-12 flex flex-col items-center gap-4"
         >
-          <div className="text-center sm:text-left">
+          <div className="text-center w-full max-w-2xl">
             <h2 className="font-heading text-2xl font-bold text-white sm:text-3xl md:text-4xl">
               Какие виды ремонта мы выполняем
             </h2>
-            <p className="mt-4 max-w-2xl text-white/80">
+            <p className="mt-4 text-white/80">
               Выберите тип жилья и вид работ — увидите портфолио и подробнее об услуге
             </p>
           </div>
-          <div className="flex shrink-0 gap-2">
+          <div className="flex shrink-0 gap-2 lg:hidden">
             <button
               type="button"
               aria-label="Предыдущая услуга"
@@ -59,46 +89,36 @@ export function ServicesSection() {
           </div>
         </motion.div>
 
-        <Swiper
-          spaceBetween={16}
-          slidesPerView={1.05}
-          breakpoints={{
-            640: { spaceBetween: 24, slidesPerView: 2 },
-            1024: { slidesPerView: 3 },
-          }}
-          onSwiper={(swiper) => { swiperRef.current = swiper; }}
-          className="services-swiper -mx-4 px-4 sm:mx-0 sm:px-0"
-        >
+        <div className="lg:hidden">
+          <Swiper
+            spaceBetween={16}
+            slidesPerView={1.05}
+            breakpoints={{
+              640: { spaceBetween: 24, slidesPerView: 2 },
+            }}
+            onSwiper={(swiper) => { swiperRef.current = swiper; }}
+            className="services-swiper -mx-4 px-4 sm:mx-0 sm:px-0"
+          >
+            {services.map((service) => {
+              const Icon = iconMap[service.icon as keyof typeof iconMap] || Home;
+              return (
+                <SwiperSlide key={service.slug}>
+                  <ServiceCard service={service} Icon={Icon} />
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        </div>
+        <div className="hidden lg:grid lg:grid-cols-3 lg:gap-6">
           {services.map((service) => {
             const Icon = iconMap[service.icon as keyof typeof iconMap] || Home;
             return (
-              <SwiperSlide key={service.slug}>
-                <motion.div
-                  initial={{ opacity: 1, y: 0 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  whileHover={{ y: -4, boxShadow: "0 20px 40px -15px rgba(0,0,0,0.4)" }}
-                  className="group relative h-full rounded-xl border border-white/20 bg-white/5 p-4 transition-shadow sm:p-6"
-                >
-                  <div className="mb-4 inline-flex rounded-lg bg-white/20 p-3 text-white">
-                    <Icon className="size-8" />
-                  </div>
-                  <h3 className="font-heading text-xl font-semibold text-white">
-                    {service.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-white/80">{service.description}</p>
-                  <Link
-                    href={`/uslugi/${service.slug}`}
-                    className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-white hover:underline"
-                  >
-                    Подробнее
-                    <ChevronRight className="size-4" />
-                  </Link>
-                </motion.div>
-              </SwiperSlide>
+              <Link key={service.slug} href={`/uslugi/${service.slug}`}>
+                <ServiceCard service={service} Icon={Icon} />
+              </Link>
             );
           })}
-        </Swiper>
+        </div>
 
         <motion.div
           initial={{ opacity: 1 }}
@@ -106,7 +126,7 @@ export function ServicesSection() {
           viewport={{ once: true }}
           className="mt-12 flex justify-center"
         >
-          <Button asChild variant="secondary" className="border-white/30 bg-white/10 text-white hover:bg-white hover:text-primary">
+          <Button asChild variant="primary">
             <Link href="/uslugi">Все услуги</Link>
           </Button>
         </motion.div>

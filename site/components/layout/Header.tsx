@@ -35,7 +35,7 @@ export function Header() {
         <div className="container mx-auto flex h-14 min-h-[56px] items-center justify-between gap-2 px-4 sm:px-6 lg:h-20 lg:gap-4">
         <Link href="/" className="flex shrink-0 flex-col">
           <span className="font-heading text-xl font-bold text-primary lg:text-2xl">UHome</span>
-          <span className="hidden text-[0.65rem] tracking-wide text-primary/70 lg:block">Дом начинается с тебя</span>
+          <span className="block text-[0.6rem] sm:text-[0.65rem] tracking-wide text-primary/70">Дом начинается с тебя</span>
         </Link>
 
         {/* Телефон и Telegram — видны на мобильных с первого входа */}

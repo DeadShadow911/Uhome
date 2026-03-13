@@ -82,7 +82,7 @@ export function QuickEstimateSection() {
 
   if (submitted) {
     return (
-      <section className="py-10 sm:py-16 md:py-24">
+      <section className="bg-background py-10 sm:py-16 md:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -105,7 +105,7 @@ export function QuickEstimateSection() {
   }
 
   return (
-    <section className="py-10 sm:py-16 md:py-24">
+    <section className="bg-background py-10 sm:py-16 md:py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 1, y: 0 }}

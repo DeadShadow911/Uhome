@@ -39,23 +39,23 @@ const advantages = [
 
 export function AdvantagesSection() {
   return (
-    <section className="py-10 sm:py-16 md:py-24 bg-background">
+    <section className="py-8 sm:py-10 md:py-14 bg-background">
       <div className="container mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 1, y: 0 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-12 text-center sm:mb-16"
+          className="mb-6 text-center sm:mb-8"
         >
-          <h2 className="font-heading text-2xl font-bold text-primary sm:text-3xl md:text-4xl">
+          <h2 className="font-heading text-xl font-bold text-primary sm:text-2xl md:text-3xl">
             Преимущества работы с нами
           </h2>
-          <p className="mt-4 max-w-2xl mx-auto text-text-muted">
+          <p className="mt-2 max-w-xl mx-auto text-sm text-text-muted">
             Получите максимально возможную выгоду во время ремонта
           </p>
         </motion.div>
 
-        <div className="grid gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-3 sm:gap-4 grid-cols-2 lg:grid-cols-3">
           {advantages.map((item) => {
             const Icon = item.icon;
             return (
@@ -64,16 +64,16 @@ export function AdvantagesSection() {
                 initial={{ opacity: 1, y: 0 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                whileHover={{ y: -4, boxShadow: "0 12px 24px -10px rgba(10,10,10,0.15)" }}
-                className="rounded-xl border border-primary/10 bg-white p-6 shadow-sm transition-shadow"
+                whileHover={{ y: -2, boxShadow: "0 8px 20px -8px rgba(10,10,10,0.12)" }}
+                className="rounded-lg border border-primary/10 bg-white p-4 shadow-sm transition-shadow"
               >
-                <div className="flex size-12 items-center justify-center rounded-xl bg-primary/10">
-                  <Icon className="size-6 text-primary" />
+                <div className="flex size-10 items-center justify-center rounded-lg bg-primary/10 sm:size-11">
+                  <Icon className="size-5 text-primary sm:size-5" />
                 </div>
-                <h3 className="mt-4 font-heading text-lg font-semibold text-primary">
+                <h3 className="mt-3 font-heading text-base font-semibold text-primary sm:text-lg">
                   {item.title}
                 </h3>
-                <p className="mt-2 text-sm text-text-muted leading-relaxed">
+                <p className="mt-1 text-xs text-text-muted leading-snug sm:text-sm">
                   {item.description}
                 </p>
               </motion.div>

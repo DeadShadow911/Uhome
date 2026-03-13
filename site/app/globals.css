@@ -54,6 +54,17 @@
 }
 
 /* Swiper */
+.portfolio-swiper .swiper-slide {
+  height: auto;
+}
+@media (max-width: 639px) {
+  .portfolio-swiper {
+    overflow: hidden;
+  }
+  .portfolio-swiper .swiper-slide {
+    max-width: 100%;
+  }
+}
 .services-swiper .swiper-button-prev,
 .services-swiper .swiper-button-next,
 .reviews-swiper .swiper-button-prev,
