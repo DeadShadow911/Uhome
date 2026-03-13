@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Контакты | UHome — ремонт в Гродно",
+  title: "Контакты UHome — Ремонт квартир Гродно",
   description:
-    "Свяжитесь с UHome для расчёта стоимости ремонта и консультации. Телефон, email, адрес в Гродно. Форма обратной связи.",
+    "Заказать ремонт квартир в Гродно: телефон, WhatsApp, Telegram. Бесплатный замер и смета. Адрес и форма обратной связи.",
 };
 
 export default function KontaktyLayout({

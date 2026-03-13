@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Частые вопросы | UHome",
+  title: "Частые вопросы о ремонте квартир в Гродно — UHome",
   description:
-    "Ответы на популярные вопросы о ремонте квартир и домов, сроках, гарантии и наших услугах. UHome Гродно.",
+    "Ответы на вопросы о ремонте квартир в Гродно: стоимость, сроки, гарантия, материалы. UHome — надёжный подрядчик.",
 };
 
 export default function FAQLayout({

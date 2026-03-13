@@ -96,9 +96,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const post = blogPosts.find((p) => p.slug === slug);
   if (!post) return {};
+  const url = `/blog/${slug}`;
   return {
-    title: `${post.title} | UHome Блог`,
+    title: post.title,
     description: post.excerpt,
+    keywords: ["ремонт Гродно", "ремонт квартир Гродно"],
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      url,
+      type: "article",
+      images: post.image ? [{ url: post.image, width: 1200, height: 630, alt: post.title }] : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+    },
+    alternates: { canonical: url },
   };
 }
 

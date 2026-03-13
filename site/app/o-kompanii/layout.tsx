@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "О компании UHome | Гродно",
+  title: "О компании UHome — Ремонт квартир в Гродно",
   description:
-    "UHome — компания с многолетним опытом на рынке ремонта и отделки в Гродно. Ремонт квартир и строительство домов под ключ.",
+    "UHome — компания с опытом на рынке ремонта квартир в Гродно. Отделка под ключ, гарантия 2 года, прозрачная смета.",
 };
 
 export default function OKompaniiLayout({

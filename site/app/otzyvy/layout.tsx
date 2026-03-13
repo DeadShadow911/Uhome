@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Отзывы клиентов | UHome",
+  title: "Отзывы о ремонте квартир в Гродно — UHome",
   description:
-    "Отзывы клиентов о работе UHome. Ремонт квартир и домов в Гродно — реальные истории и рекомендации.",
+    "Реальные отзывы клиентов о ремонте квартир в Гродно. Рекомендации и истории от заказчиков UHome.",
 };
 
 export default function OtzyvyLayout({

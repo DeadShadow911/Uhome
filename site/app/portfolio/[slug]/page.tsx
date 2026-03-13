@@ -13,11 +13,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const item = portfolioItems.find((p) => p.slug === slug);
   if (!item) return {};
+  const title = `${item.title} — UHome Гродно`;
+  const description = item.intro
+    ? `${item.type}, ${item.area}. ${item.intro.slice(0, 155)}${item.intro.length > 155 ? "…" : ""}`
+    : `${item.type}, ${item.area}. Реализованный проект ремонта в Гродно.`;
+  const url = `/portfolio/${slug}`;
   return {
-    title: `${item.title} | UHome Портфолио`,
-    description: item.description
-      ? `${item.type} — ${item.area}. ${item.description.slice(0, 150)}...`
-      : `${item.type} — ${item.area}. Реализованный проект UHome в Гродно.`,
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      url,
+      type: "article",
+      images: item.image ? [{ url: item.image, width: 1200, height: 630, alt: item.title }] : undefined,
+    },
+    alternates: { canonical: url },
   };
 }
 

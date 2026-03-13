@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Блог о ремонте | UHome",
+  title: "Блог о ремонте квартир в Гродно | Советы и цены 2025 — UHome",
   description:
-    "Полезные статьи о ремонте квартир и домов, материалах и трендах в отделке. UHome — ремонт в Гродно.",
+    "Статьи о ремонте квартир в Гродно: стоимость, этапы, выбор подрядчика, материалы. Актуальные цены и советы от UHome.",
 };
 
 export default function BlogLayout({

@@ -14,9 +14,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const service = services.find((s) => s.slug === slug);
   if (!service) return {};
+  const title = `${service.title} в Гродно — UHome`;
+  const url = `/uslugi/${slug}`;
   return {
-    title: `${service.title} | UHome`,
+    title,
     description: service.description,
+    openGraph: {
+      title,
+      description: service.description,
+      url,
+      type: "website",
+    },
+    alternates: { canonical: url },
   };
 }
 
