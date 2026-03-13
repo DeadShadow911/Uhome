@@ -14,6 +14,7 @@ import { QuizStep } from "./QuizStep";
 import { quizSteps, type QuizAnswers } from "@/lib/quiz-data";
 import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
+import { usePhoneValidation } from "@/components/forms/PhoneInput";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const TOTAL_STEPS = 6;
@@ -25,6 +26,7 @@ export function QuizDialog({ children }: { children: React.ReactNode }) {
   const [answers, setAnswers] = useState<QuizAnswers>({});
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { phoneError, setPhoneError, validatePhone } = usePhoneValidation();
 
   const formId = siteConfig.formspree.quiz || siteConfig.formspree.cta;
   const formAction = formId ? `https://formspree.io/f/${formId}` : "#";
@@ -49,13 +51,15 @@ export function QuizDialog({ children }: { children: React.ReactNode }) {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const form = e.currentTarget;
+    const phone = (form.elements.namedItem("phone") as HTMLInputElement)?.value ?? "";
+    if (!validatePhone(phone)) return;
     if (!formId) {
       setSubmitted(true);
       setOpen(false);
       return;
     }
     setIsSubmitting(true);
-    const form = e.currentTarget;
     const formData = new FormData(form);
 
     formData.set("_subject", "UHome: Заявка из квиза");
@@ -163,13 +167,20 @@ export function QuizDialog({ children }: { children: React.ReactNode }) {
                 required
                 className="w-full min-h-[48px] rounded-lg border border-primary/20 bg-background px-4 py-3 text-primary"
               />
-              <input
-                type="tel"
-                name="phone"
-                placeholder="Телефон"
-                required
-                className="w-full min-h-[48px] rounded-lg border border-primary/20 bg-background px-4 py-3 text-primary"
-              />
+              <div>
+                <input
+                  type="tel"
+                  name="phone"
+                  placeholder="+375 (33) 123 45 67"
+                  required
+                  className={cn(
+                    "w-full min-h-[48px] rounded-lg border px-4 py-3 text-primary",
+                    phoneError ? "border-red-500 bg-red-50" : "border-primary/20 bg-background"
+                  )}
+                  onFocus={() => setPhoneError(null)}
+                />
+                {phoneError && <p className="mt-1.5 text-sm text-red-600">{phoneError}</p>}
+              </div>
               <Button
                 type="submit"
                 variant="primary"

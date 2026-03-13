@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, ChevronLeft } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 import Link from "next/link";
+import { usePhoneValidation } from "@/components/forms/PhoneInput";
 
 type QuickEstimateParams = {
   objectType: "apartment" | "house" | "room";
@@ -49,19 +50,22 @@ export function QuickEstimateSection() {
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [agree, setAgree] = useState(false);
+  const { phoneError, setPhoneError, validatePhone } = usePhoneValidation();
 
   const formId = siteConfig.formspree.calculator;
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!agree) return;
+    const form = e.currentTarget;
+    const phone = (form.elements.namedItem("phone") as HTMLInputElement)?.value ?? "";
+    if (!validatePhone(phone)) return;
     setIsSubmitting(true);
     if (!formId) {
       setIsSubmitting(false);
       setSubmitted(true);
       return;
     }
-    const form = e.currentTarget;
     const formData = new FormData(form);
     formData.set("_subject", "UHome: Быстрый расчёт стоимости");
     formData.set("params_summary", formatSummary(params));
@@ -110,10 +114,10 @@ export function QuickEstimateSection() {
           className="mb-10 text-center"
         >
           <h2 className="font-heading text-2xl font-bold text-primary sm:text-3xl md:text-4xl">
-            Быстрый расчёт стоимости
+            Калькулятор расчёта стоимости ремонта
           </h2>
           <p className="mt-3 max-w-xl mx-auto text-text-muted text-sm sm:text-base">
-            Укажите параметры и получите расчёт в течение 5 минут
+            Узнайте примерную стоимость ремонта вашей квартиры
           </p>
         </motion.div>
 
@@ -143,7 +147,7 @@ export function QuickEstimateSection() {
                   <label className="mb-2 block text-sm font-medium text-primary">
                     Что нужно отремонтировать?
                   </label>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="grid grid-cols-3 gap-2 sm:flex sm:flex-wrap">
                     {[
                       { value: "apartment" as const, label: "Квартира" },
                       { value: "house" as const, label: "Дом" },
@@ -253,13 +257,21 @@ export function QuickEstimateSection() {
                   течение 5 минут
                 </p>
 
-                <input
-                  type="tel"
-                  name="phone"
-                  placeholder="Телефон"
-                  required
-                  className="w-full min-h-[48px] rounded-lg border border-primary/20 bg-background px-4 py-3 text-primary"
-                />
+                <div>
+                  <input
+                    type="tel"
+                    name="phone"
+                    placeholder="+375 (33) 123 45 67"
+                    required
+                    className={`w-full min-h-[48px] rounded-lg border px-4 py-3 text-primary ${
+                      phoneError ? "border-red-500 bg-red-50" : "border-primary/20 bg-background"
+                    }`}
+                    onFocus={() => setPhoneError(null)}
+                  />
+                  {phoneError && (
+                    <p className="mt-1.5 text-sm text-red-600">{phoneError}</p>
+                  )}
+                </div>
 
                 <label className="flex items-start gap-3 cursor-pointer">
                   <input
@@ -279,12 +291,12 @@ export function QuickEstimateSection() {
                   </span>
                 </label>
 
-                <div className="flex gap-3">
+                <div className="flex flex-col gap-3 sm:flex-row">
                   <Button
                     type="button"
                     variant="secondary"
                     size="lg"
-                    className="gap-2 flex-1"
+                    className="gap-2 w-full sm:flex-1 order-2 sm:order-1"
                     onClick={() => setStep(1)}
                   >
                     <ChevronLeft className="size-4" />
@@ -294,7 +306,7 @@ export function QuickEstimateSection() {
                     type="submit"
                     variant="primary"
                     size="lg"
-                    className="flex-1"
+                    className="w-full sm:flex-1 order-1 sm:order-2"
                     disabled={!agree || isSubmitting}
                   >
                     {isSubmitting ? "Отправка…" : "Узнать стоимость"}

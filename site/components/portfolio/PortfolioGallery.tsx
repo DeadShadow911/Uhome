@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -29,8 +29,21 @@ export function PortfolioGallery({ item }: Props) {
 
   const images = item.images ?? [item.image];
   const sections = item.sections ?? [];
-  const hasParams =
-    item.location || item.area || item.rooms || item.style;
+  const params: Array<{ label: string; value: string }> =
+    item.params && item.params.length > 0
+      ? item.params
+      : [
+          ...(item.area ? [{ label: "Площадь", value: item.area }] : []),
+          ...(item.rooms ? [{ label: "Комнат", value: item.rooms }] : []),
+          ...(item.location ? [{ label: "Адрес", value: item.location }] : []),
+          ...(item.style ? [{ label: "Стиль", value: item.style }] : []),
+        ];
+
+  const similarProjects = useMemo(() => {
+    return portfolioItems
+      .filter((p) => p.slug !== item.slug)
+      .slice(0, 6);
+  }, [item.slug]);
 
   const openLightbox = (index: number) => {
     setLightboxIndex(index);
@@ -85,61 +98,41 @@ export function PortfolioGallery({ item }: Props) {
           <h1 className="mt-2 font-heading text-3xl font-bold text-white sm:text-4xl md:text-5xl lg:text-6xl">
             {item.title}
           </h1>
-          {item.intro && (
-            <p className="mt-4 max-w-3xl text-base leading-relaxed text-white/95 sm:text-lg md:text-xl">
-              {item.intro}
-            </p>
-          )}
         </div>
       </section>
 
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 md:px-8">
-        {/* Параметры проекта (как у Domeo) */}
-        {hasParams && (
+        {/* Параметры проекта (стиль sknebo.ru: Метраж, Срок, Тип) */}
+        {params.length > 0 && (
           <motion.div
             {...fadeUp}
-            className="mb-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
+            className="mb-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
           >
-            {item.location && (
-              <div className=" rounded-lg border border-primary/15 bg-white p-4 shadow-sm">
-                <span className="block text-sm font-medium text-primary/70">
-                  Адрес
+            {params.map((p) => (
+              <div
+                key={p.label}
+                className="rounded-xl border border-primary/10 bg-white p-5 shadow-sm transition hover:shadow-md"
+              >
+                <span className="block text-xs font-medium uppercase tracking-wider text-primary/60">
+                  {p.label}
                 </span>
-                <span className="mt-1 block text-lg font-semibold text-primary">
-                  {item.location}
-                </span>
-              </div>
-            )}
-            {item.area && (
-              <div className="rounded-lg border border-primary/15 bg-white p-4 shadow-sm">
-                <span className="block text-sm font-medium text-primary/70">
-                  Площадь
-                </span>
-                <span className="mt-1 block text-lg font-semibold text-primary">
-                  {item.area}
+                <span className="mt-2 block text-lg font-semibold text-primary">
+                  {p.value}
                 </span>
               </div>
-            )}
-            {item.rooms && (
-              <div className="rounded-lg border border-primary/15 bg-white p-4 shadow-sm">
-                <span className="block text-sm font-medium text-primary/70">
-                  Кол-во комнат
-                </span>
-                <span className="mt-1 block text-lg font-semibold text-primary">
-                  {item.rooms}
-                </span>
-              </div>
-            )}
-            {item.style && (
-              <div className="rounded-lg border border-primary/15 bg-white p-4 shadow-sm">
-                <span className="block text-sm font-medium text-primary/70">
-                  Стиль интерьера
-                </span>
-                <span className="mt-1 block text-lg font-semibold text-primary">
-                  {item.style}
-                </span>
-              </div>
-            )}
+            ))}
+          </motion.div>
+        )}
+
+        {/* Вступление (стиль sknebo) */}
+        {item.intro && (
+          <motion.div {...fadeUp} className="mb-12">
+            <p className="max-w-3xl text-base leading-relaxed text-primary/90 sm:text-lg">
+              {item.intro}
+            </p>
+            <Button asChild className="mt-6">
+              <Link href="/kontakty">Консультация</Link>
+            </Button>
           </motion.div>
         )}
 
@@ -284,9 +277,50 @@ export function PortfolioGallery({ item }: Props) {
             />
           </motion.section>
         )}
+
+        {/* Похожие проекты (стиль sknebo.ru) */}
+        {similarProjects.length > 0 && (
+          <motion.section {...fadeUp} className="mt-20 sm:mt-24">
+            <h2 className="mb-8 font-heading text-2xl font-bold text-primary sm:text-3xl">
+              Похожие проекты
+            </h2>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {similarProjects.map((p) => (
+                <Link
+                  key={p.slug}
+                  href={`/portfolio/${p.slug}`}
+                  className="group overflow-hidden rounded-xl border border-primary/10 bg-white shadow-sm transition hover:shadow-lg hover:border-primary/20"
+                >
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <Image
+                      src={p.image}
+                      alt={p.title}
+                      fill
+                      className="object-cover transition duration-300 group-hover:scale-105"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                  </div>
+                  <div className="p-4 sm:p-5">
+                    <h3 className="font-heading text-base font-semibold text-primary group-hover:text-accent sm:text-lg">
+                      {p.title}
+                    </h3>
+                    <p className="mt-1 text-sm text-text-muted">
+                      {p.type} • {p.area}
+                    </p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+            <div className="mt-8 text-center">
+              <Button asChild variant="outline" className="border-primary/30">
+                <Link href="/portfolio">Все проекты</Link>
+              </Button>
+            </div>
+          </motion.section>
+        )}
       </div>
 
-      {/* CTA как у Domeo */}
+      {/* CTA как у sknebo.ru */}
       <section className="bg-primary py-16 text-center text-white sm:py-24">
         <div className="container mx-auto px-4 sm:px-6">
           <h2 className="font-heading text-2xl font-bold sm:text-3xl md:text-4xl">

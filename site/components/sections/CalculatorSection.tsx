@@ -311,7 +311,6 @@ export function CalculatorSection() {
                       }
                       className="w-full min-w-0 min-h-[48px] rounded-lg border border-primary/20 bg-background px-4 py-3 text-primary"
                     >
-                      <option value="frame">Каркасный дом — коробка</option>
                       <option value="blocks_box">Дом из блоков — коробка</option>
                       <option value="blocks_full">Дом из блоков — под ключ</option>
                       <option value="brick_box">Кирпичный дом — коробка</option>

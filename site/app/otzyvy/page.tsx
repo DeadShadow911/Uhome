@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { reviews } from "@/lib/mock-data";
 import { Star } from "lucide-react";
 
@@ -26,13 +25,12 @@ export default function OtzyvyPage() {
               </div>
               <p className="mt-4 text-primary">&ldquo;{review.text}&rdquo;</p>
               <div className="mt-6 flex items-center gap-4">
-                <div className="relative size-14 overflow-hidden rounded-full bg-primary/10">
-                  <Image
-                    src={review.avatar}
-                    alt={review.author}
-                    fill
-                    className="object-cover"
-                  />
+                <div className="flex size-14 shrink-0 items-center justify-center rounded-full bg-primary/10 text-base font-semibold text-primary">
+                  {review.author
+                    .split(" ")
+                    .map((s) => s[0])
+                    .join("")
+                    .slice(0, 2)}
                 </div>
                 <div>
                   <p className="font-semibold text-primary">{review.author}</p>

@@ -1,10 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ClipboardList, FileCheck, Calculator, Truck, HardHat, CheckCircle } from "lucide-react";
+import { ClipboardList, MapPin, FileText, FileCheck, Truck, HardHat, Sparkles, Banknote } from "lucide-react";
 import { processSteps } from "@/lib/mock-data";
 
-const icons = [ClipboardList, FileCheck, Calculator, Truck, HardHat, CheckCircle];
+const icons = [ClipboardList, MapPin, FileText, FileCheck, Truck, HardHat, Sparkles, Banknote];
 
 export function ProcessSection() {
   return (
@@ -17,14 +17,14 @@ export function ProcessSection() {
           className="mb-10 text-center sm:mb-16"
         >
           <h2 className="font-heading text-2xl font-bold sm:text-3xl md:text-4xl">
-            Процесс работы
+            Как мы работаем
           </h2>
           <p className="mt-4 max-w-2xl mx-auto text-white/80">
-            От замеров до сдачи объекта — прозрачно и поэтапно
+            Прозрачный процесс от заявки до сдачи объекта
           </p>
         </motion.div>
 
-        <div className="mt-10 grid gap-4 sm:mt-16 sm:gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
+        <div className="mt-10 grid gap-4 sm:mt-16 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {processSteps.map((item, i) => {
             const Icon = icons[i] || ClipboardList;
             return (

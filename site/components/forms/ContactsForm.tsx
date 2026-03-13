@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import { siteConfig } from "@/lib/site-config";
+import { usePhoneValidation } from "@/components/forms/PhoneInput";
 
 export function ContactsForm() {
   const [submitted, setSubmitted] = useState(false);
+  const { phoneError, setPhoneError, validatePhone } = usePhoneValidation();
 
   const formAction = siteConfig.formspree.contacts
     ? `https://formspree.io/f/${siteConfig.formspree.contacts}`
@@ -12,11 +14,13 @@ export function ContactsForm() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const form = e.currentTarget;
+    const phone = (form.elements.namedItem("phone") as HTMLInputElement)?.value ?? "";
+    if (!validatePhone(phone)) return;
     if (!siteConfig.formspree.contacts) {
       setSubmitted(true);
       return;
     }
-    const form = e.currentTarget;
     const formData = new FormData(form);
     const response = await fetch(formAction, {
       method: "POST",
@@ -45,13 +49,19 @@ export function ContactsForm() {
         required
         className="w-full min-h-[48px] rounded-lg border border-primary/20 bg-background px-4 py-3"
       />
-      <input
-        type="tel"
-        name="phone"
-        placeholder="Телефон"
-        required
-        className="w-full min-h-[48px] rounded-lg border border-primary/20 bg-background px-4 py-3"
-      />
+      <div>
+        <input
+          type="tel"
+          name="phone"
+          placeholder="+375 (33) 123 45 67"
+          required
+          className={`w-full min-h-[48px] rounded-lg border px-4 py-3 ${
+            phoneError ? "border-red-500 bg-red-50" : "border-primary/20 bg-background"
+          }`}
+          onFocus={() => setPhoneError(null)}
+        />
+        {phoneError && <p className="mt-1.5 text-sm text-red-600">{phoneError}</p>}
+      </div>
       <textarea
         name="message"
         placeholder="Сообщение"

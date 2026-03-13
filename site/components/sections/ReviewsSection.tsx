@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import { motion } from "framer-motion";
@@ -20,10 +19,10 @@ export function ReviewsSection() {
           className="mb-12 text-center"
         >
           <h2 className="font-heading text-2xl font-bold text-primary sm:text-3xl md:text-4xl">
-            Отзывы
+            Отзывы наших клиентов
           </h2>
           <p className="mt-4 max-w-2xl mx-auto text-text-muted">
-            Что говорят наши клиенты
+            Реальные истории о проделанной работе
           </p>
         </motion.div>
 
@@ -37,7 +36,7 @@ export function ReviewsSection() {
             640: { spaceBetween: 24, slidesPerView: 2 },
             1024: { slidesPerView: 3 },
           }}
-          className="reviews-swiper -mx-4 px-4 sm:mx-0 sm:px-0"
+          className="reviews-swiper -mx-4 px-4 pb-4 sm:mx-0 sm:px-0"
         >
           {reviews.map((review) => (
             <SwiperSlide key={review.id}>
@@ -55,13 +54,12 @@ export function ReviewsSection() {
                 <Quote className="mt-4 size-10 text-primary/10" />
                 <p className="mt-4 flex-1 text-sm text-primary">&ldquo;{review.text}&rdquo;</p>
                 <div className="mt-6 flex items-center gap-4">
-                  <div className="relative size-12 overflow-hidden rounded-full bg-primary/10">
-                    <Image
-                      src={review.avatar}
-                      alt={review.author}
-                      fill
-                      className="object-cover"
-                    />
+                  <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/10 text-sm font-semibold text-primary">
+                    {review.author
+                      .split(" ")
+                      .map((s) => s[0])
+                      .join("")
+                      .slice(0, 2)}
                   </div>
                   <div>
                     <p className="font-semibold text-primary">{review.author}</p>

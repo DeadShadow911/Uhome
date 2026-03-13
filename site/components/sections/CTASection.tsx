@@ -5,9 +5,11 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Phone, Send } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
+import { usePhoneValidation } from "@/components/forms/PhoneInput";
 
 export function CTASection() {
   const [submitted, setSubmitted] = useState(false);
+  const { phoneError, setPhoneError, validatePhone } = usePhoneValidation();
 
   const formAction = siteConfig.formspree.cta
     ? `https://formspree.io/f/${siteConfig.formspree.cta}`
@@ -15,11 +17,13 @@ export function CTASection() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const form = e.currentTarget;
+    const phone = (form.elements.namedItem("phone") as HTMLInputElement)?.value ?? "";
+    if (!validatePhone(phone)) return;
     if (!siteConfig.formspree.cta) {
       setSubmitted(true);
       return;
     }
-    const form = e.currentTarget;
     const formData = new FormData(form);
     const response = await fetch(formAction, {
       method: "POST",
@@ -39,10 +43,10 @@ export function CTASection() {
           className="mx-auto max-w-2xl rounded-2xl border border-white/20 bg-white/5 p-6 text-center backdrop-blur sm:p-8 md:p-12"
         >
           <h2 className="font-heading text-2xl font-bold text-white sm:text-3xl md:text-4xl">
-            Готовы начать ремонт?
+            Проконсультируйтесь <em className="font-normal">бесплатно</em> с нашим специалистом
           </h2>
           <p className="mt-4 text-white/80">
-            Оставьте заявку — перезвоним в течение 15 минут
+            Он поможет подобрать материалы и посчитает смету за 30 минут
           </p>
 
           {submitted ? (
@@ -64,13 +68,19 @@ export function CTASection() {
                 required
                 className="w-full min-h-[48px] rounded-lg border border-white/20 bg-white/10 px-4 py-3 text-white placeholder:text-white/60"
               />
-              <input
-                type="tel"
-                name="phone"
-                placeholder="Телефон"
-                required
-                className="w-full min-h-[48px] rounded-lg border border-white/20 bg-white/10 px-4 py-3 text-white placeholder:text-white/60"
-              />
+              <div>
+                <input
+                  type="tel"
+                  name="phone"
+                  placeholder="+375 (33) 123 45 67"
+                  required
+                  className={`w-full min-h-[48px] rounded-lg border px-4 py-3 text-white placeholder:text-white/60 ${
+                    phoneError ? "border-red-400 bg-red-900/20" : "border-white/20 bg-white/10"
+                  }`}
+                  onFocus={() => setPhoneError(null)}
+                />
+                {phoneError && <p className="mt-1.5 text-sm text-red-300">{phoneError}</p>}
+              </div>
               <Button type="submit" variant="primary" size="lg" className="w-full gap-2">
                 <Send className="size-4" />
                 Заказать звонок

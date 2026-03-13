@@ -17,10 +17,10 @@ export function PortfolioSection() {
           className="mb-12 text-center"
         >
           <h2 className="font-heading text-2xl font-bold text-primary sm:text-3xl md:text-4xl">
-            Портфолио
+            Наше портфолио — фото готовых ремонтов
           </h2>
           <p className="mt-4 max-w-2xl mx-auto text-text-muted">
-            Лучшие проекты наших мастеров
+            Качество наших работ вместо тысячи слов
           </p>
         </motion.div>
 

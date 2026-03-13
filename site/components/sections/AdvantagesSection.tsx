@@ -48,10 +48,10 @@ export function AdvantagesSection() {
           className="mb-12 text-center sm:mb-16"
         >
           <h2 className="font-heading text-2xl font-bold text-primary sm:text-3xl md:text-4xl">
-            Наши преимущества
+            Преимущества работы с нами
           </h2>
           <p className="mt-4 max-w-2xl mx-auto text-text-muted">
-            Почему клиенты выбирают UHome для ремонта квартир и домов в Гродно
+            Получите максимально возможную выгоду во время ремонта
           </p>
         </motion.div>
 

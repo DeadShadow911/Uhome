@@ -38,7 +38,6 @@
   },
   "houseConstruction": {
     "packages": [
-      { "id": "frame", "name": "Каркасный дом — коробка", "pricePerSqm": 700, "description": "от, без отделки" },
       { "id": "blocks_box", "name": "Дом из блоков — коробка", "pricePerSqm": 950, "description": "от, без отделки" },
       { "id": "blocks_full", "name": "Дом из блоков — под ключ", "pricePerSqm": 1800, "description": "от, с отделкой" },
       { "id": "brick_box", "name": "Кирпичный дом — коробка", "pricePerSqm": 1200, "description": "от, без отделки" },

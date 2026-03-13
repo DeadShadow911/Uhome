@@ -33,10 +33,10 @@ export function ServicesSection() {
         >
           <div className="text-center sm:text-left">
             <h2 className="font-heading text-2xl font-bold text-white sm:text-3xl md:text-4xl">
-              Услуги
+              Какие виды ремонта мы выполняем
             </h2>
             <p className="mt-4 max-w-2xl text-white/80">
-              Полный спектр работ по ремонту и отделке квартир и частных домов
+              Выберите тип жилья и вид работ — увидите портфолио и подробнее об услуге
             </p>
           </div>
           <div className="flex shrink-0 gap-2">

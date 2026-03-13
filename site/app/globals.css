@@ -71,6 +71,14 @@
 .reviews-swiper .swiper-button-next::after {
   font-size: 1.5rem;
 }
+.reviews-swiper .swiper-pagination {
+  margin-top: 24px;
+}
+@media (max-width: 639px) {
+  .reviews-swiper .swiper-pagination {
+    margin-top: 40px;
+  }
+}
 .reviews-swiper .swiper-pagination-bullet {
   width: 10px;
   height: 10px;

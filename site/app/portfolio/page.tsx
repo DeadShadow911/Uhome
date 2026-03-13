@@ -6,7 +6,7 @@ import Image from "next/image";
 import { portfolioItems } from "@/lib/mock-data";
 import { cn } from "@/lib/utils";
 
-const types = ["Все", "Косметический ремонт", "Капитальный ремонт", "Дизайнерский ремонт", "Евроремонт", "Строительство под ключ"];
+const types = ["Все", "Косметический ремонт", "Капитальный ремонт", "Дизайнерский ремонт", "Евроремонт", "Чистовая отделка", "Ремонт санузла", "Ремонт под ключ"];
 
 export default function PortfolioPage() {
   const [filter, setFilter] = useState("Все");
