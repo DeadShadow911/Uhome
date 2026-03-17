@@ -1,23 +1,33 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { Home, Building, Palette, Hammer, PaintBucket, Wrench, ChevronRight, ChevronLeft } from "lucide-react";
+import { Home, Building, Building2, Hammer, PaintBucket, Wrench, Flame, Car, Tent, TreePine, ChevronRight, ChevronLeft } from "lucide-react";
 import { services } from "@/lib/mock-data";
+import type { ServiceCategory } from "@/lib/mock-data";
 import "swiper/css";
 
 const iconMap = {
   Home,
   Building,
-  Palette,
+  Building2,
   Hammer,
   PaintBucket,
   Wrench,
+  Flame,
+  Car,
+  Tent,
+  TreePine,
 };
+
+const CATEGORIES: { id: ServiceCategory; label: string }[] = [
+  { id: "remont", label: "Ремонт и отделка" },
+  { id: "stroitelstvo", label: "Строительство" },
+];
 
 function ServiceCard({
   service,
@@ -51,6 +61,8 @@ function ServiceCard({
 
 export function ServicesSection() {
   const swiperRef = useRef<SwiperType | null>(null);
+  const [activeCategory, setActiveCategory] = useState<ServiceCategory>("remont");
+  const filteredServices = services.filter((s) => (s.category ?? "remont") === activeCategory);
 
   return (
     <section className="py-10 sm:py-16 md:py-24 bg-primary text-white">
@@ -63,11 +75,23 @@ export function ServicesSection() {
         >
           <div className="text-center w-full max-w-2xl">
             <h2 className="font-heading text-2xl font-bold text-white sm:text-3xl md:text-4xl">
-              Какие виды ремонта мы выполняем
+              Наши услуги
             </h2>
             <p className="mt-4 text-white/80">
-              Выберите тип жилья и вид работ — увидите портфолио и подробнее об услуге
+              Ремонт, отделка и строительство домов, бань, придомовых построек
             </p>
+          </div>
+          <div className="flex shrink-0 gap-1 rounded-lg border border-white/20 bg-white/5 p-1">
+            {CATEGORIES.map((cat) => (
+              <button
+                key={cat.id}
+                type="button"
+                onClick={() => setActiveCategory(cat.id)}
+                className={`rounded-md px-4 py-2 text-sm font-medium transition ${activeCategory === cat.id ? "bg-white text-primary" : "text-white/80 hover:text-white"}`}
+              >
+                {cat.label}
+              </button>
+            ))}
           </div>
           <div className="flex shrink-0 gap-2 lg:hidden">
             <button
@@ -91,6 +115,7 @@ export function ServicesSection() {
 
         <div className="lg:hidden">
           <Swiper
+            key={activeCategory}
             spaceBetween={16}
             slidesPerView={1.05}
             breakpoints={{
@@ -99,7 +124,7 @@ export function ServicesSection() {
             onSwiper={(swiper) => { swiperRef.current = swiper; }}
             className="services-swiper -mx-4 px-4 sm:mx-0 sm:px-0"
           >
-            {services.map((service) => {
+            {filteredServices.map((service) => {
               const Icon = iconMap[service.icon as keyof typeof iconMap] || Home;
               return (
                 <SwiperSlide key={service.slug}>
@@ -110,7 +135,7 @@ export function ServicesSection() {
           </Swiper>
         </div>
         <div className="hidden lg:grid lg:grid-cols-3 lg:gap-6">
-          {services.map((service) => {
+          {filteredServices.map((service) => {
             const Icon = iconMap[service.icon as keyof typeof iconMap] || Home;
             return (
               <Link key={service.slug} href={`/uslugi/${service.slug}`}>

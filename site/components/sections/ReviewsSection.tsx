@@ -24,6 +24,13 @@ export function ReviewsSection() {
           <p className="mt-4 max-w-2xl mx-auto text-text-muted">
             Реальные истории о проделанной работе
           </p>
+          <div className="mt-4 flex items-center justify-center gap-2">
+            <div className="flex gap-0.5 text-primary">
+              <Star className="size-5 fill-current" />
+              <span className="ml-1 font-semibold text-primary">4.8</span>
+            </div>
+            <span className="text-text-muted">— средний рейтинг</span>
+          </div>
         </motion.div>
 
         <Swiper
@@ -36,7 +43,7 @@ export function ReviewsSection() {
             640: { spaceBetween: 24, slidesPerView: 2 },
             1024: { slidesPerView: 3 },
           }}
-          className="reviews-swiper -mx-4 px-4 pb-4 sm:mx-0 sm:px-0"
+          className="reviews-swiper -mx-4 px-4 pb-10 sm:mx-0 sm:px-0 sm:pb-12"
         >
           {reviews.map((review) => (
             <SwiperSlide key={review.id}>
@@ -54,9 +61,10 @@ export function ReviewsSection() {
                 <Quote className="mt-4 size-10 text-primary/10" />
                 <p className="mt-4 flex-1 text-sm text-primary">&ldquo;{review.text}&rdquo;</p>
                 <div className="mt-6 flex items-center gap-4">
-                  <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/10 text-sm font-semibold text-primary">
+                  <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/10 text-sm font-semibold text-primary uppercase">
                     {review.author
-                      .split(" ")
+                      .split(/[\s_]/)
+                      .filter(Boolean)
                       .map((s) => s[0])
                       .join("")
                       .slice(0, 2)}

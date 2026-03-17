@@ -7,6 +7,9 @@ const footerLinks = {
     { label: "Ремонт квартир", href: "/uslugi/remont-kvartir" },
     { label: "Ремонт домов", href: "/uslugi/remont-domov" },
     { label: "Капитальный ремонт", href: "/uslugi/kapitalnyj-remont" },
+    { label: "Строительство домов", href: "/uslugi/stroitelstvo-domov" },
+    { label: "Бани и гаражи", href: "/uslugi/bani" },
+    { label: "Благоустройство", href: "/uslugi/blagoustrojstvo" },
   ],
   company: [
     { label: "О компании", href: "/o-kompanii" },
