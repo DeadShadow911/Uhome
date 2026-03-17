@@ -1,5 +1,6 @@
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
+import { PhoneLink } from "@/components/ui/PhoneLink";
 import { ContactsForm } from "@/components/forms/ContactsForm";
 
 export default function KontaktyPage() {
@@ -20,13 +21,14 @@ export default function KontaktyPage() {
                 Реквизиты
               </h2>
               <div className="mt-4 space-y-4">
-                <a
+                <PhoneLink
                   href={`tel:${siteConfig.phone.replace(/\s/g, "")}`}
+                  location="contacts"
                   className="flex items-center gap-3 text-primary hover:text-accent"
                 >
                   <Phone className="size-5 shrink-0" />
                   {siteConfig.phone}
-                </a>
+                </PhoneLink>
                 <a
                   href={`mailto:${siteConfig.email}`}
                   className="flex items-center gap-3 text-primary hover:text-accent"

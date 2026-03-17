@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { siteConfig } from "@/lib/site-config";
 import { usePhoneValidation } from "@/components/forms/PhoneInput";
+import { trackGAEvent, trackYMGoal, trackFBEvent } from "@/components/analytics/Analytics";
 
 export function ArticleLeadForm({ subject = "UHome: Заявка со статьи блога" }: { subject?: string }) {
   const [submitted, setSubmitted] = useState(false);
@@ -30,7 +31,12 @@ export function ArticleLeadForm({ subject = "UHome: Заявка со стать
       headers: { Accept: "application/json" },
     });
     setIsSubmitting(false);
-    if (response.ok) setSubmitted(true);
+    if (response.ok) {
+      trackGAEvent("generate_lead", { method: "blog" });
+      trackYMGoal("blog_lead");
+      trackFBEvent("Lead", { content_name: "blog" });
+      setSubmitted(true);
+    }
   };
 
   if (submitted) {

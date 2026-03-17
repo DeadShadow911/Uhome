@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { MapPin, Phone, Mail } from "lucide-react";
+import { PhoneLink } from "@/components/ui/PhoneLink";
 import { siteConfig } from "@/lib/site-config";
 
 const footerLinks = {
@@ -43,13 +44,14 @@ export function Footer() {
               Профессиональный ремонт квартир и частных домов под ключ. {siteConfig.stats.yearsExperience} лет опыта, {siteConfig.stats.projectsCount}+ объектов, гарантия {siteConfig.stats.warrantyLabel}.
             </p>
             <div className="mt-6 flex flex-col gap-3">
-              <a
+              <PhoneLink
                 href={`tel:${siteConfig.phone.replace(/\s/g, "")}`}
+                location="footer"
                 className="flex min-h-[44px] items-center gap-2 text-white/90 hover:text-white"
               >
                 <Phone className="size-4 shrink-0" />
                 {siteConfig.phone}
-              </a>
+              </PhoneLink>
               <a
                 href={`mailto:${siteConfig.email}`}
                 className="flex min-h-[44px] items-center gap-2 text-white/90 hover:text-white"

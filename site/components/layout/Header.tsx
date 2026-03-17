@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { trackGAEvent } from "@/components/analytics/Analytics";
+import { PhoneLink } from "@/components/ui/PhoneLink";
 import { cn } from "@/lib/utils";
 import { Menu, X, Phone, Calculator } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
@@ -45,13 +47,14 @@ export function Header() {
 
         {/* Телефон и Telegram — видны на мобильных с первого входа */}
         <div className="flex min-w-0 shrink items-center gap-0.5 sm:gap-1 lg:hidden">
-          <a
+          <PhoneLink
             href={`tel:${siteConfig.phone.replace(/\s/g, "")}`}
+            location="header_mobile"
             className="flex min-h-[44px] items-center gap-1 rounded-lg px-2 py-2 text-primary hover:bg-black/5 active:bg-black/10"
           >
             <Phone className="size-4 shrink-0 sm:size-5" />
             <span className="truncate text-[11px] font-medium leading-tight sm:text-sm">{siteConfig.phone}</span>
-          </a>
+          </PhoneLink>
           <a
             href={siteConfig.socials.telegram}
             target="_blank"
@@ -119,18 +122,22 @@ export function Header() {
 
         <div className="hidden items-center gap-4 lg:flex">
           <Button asChild size="sm" variant="primary" className="gap-2">
-            <Link href="/kalkulyator">
+            <Link
+              href="/kalkulyator"
+              onClick={() => trackGAEvent("click", { event_category: "cta", event_label: "header_kalkulyator" })}
+            >
               <Calculator className="size-4" />
               Быстрый расчёт
             </Link>
           </Button>
-          <a
+          <PhoneLink
             href={`tel:${siteConfig.phone.replace(/\s/g, "")}`}
+            location="header"
             className="flex items-center gap-2 text-primary hover:underline"
           >
             <Phone className="size-4" />
             <span className="font-medium">{siteConfig.phone}</span>
-          </a>
+          </PhoneLink>
           <a
             href={siteConfig.socials.telegram}
             target="_blank"
@@ -200,13 +207,20 @@ export function Header() {
             )}
             <div className="mt-4 flex flex-col gap-2 border-t border-black/10 pt-4">
               <Button asChild variant="primary" className="min-h-[48px] w-full gap-2">
-                <Link href="/kalkulyator" onClick={() => setMobileOpen(false)}>
+                <Link
+                  href="/kalkulyator"
+                  onClick={() => {
+                    setMobileOpen(false);
+                    trackGAEvent("click", { event_category: "cta", event_label: "mobile_kalkulyator" });
+                  }}
+                >
                   <Calculator className="size-4" />
                   Быстрый расчёт
                 </Link>
               </Button>
-              <a
+              <PhoneLink
                 href={`tel:${siteConfig.phone.replace(/\s/g, "")}`}
+                location="header_mobile_menu"
                 className={cn(
                   "flex min-h-[48px] items-center justify-center gap-2 rounded-lg py-3",
                   "border border-black/20 text-primary hover:bg-black/5 active:bg-black/10"
@@ -214,7 +228,7 @@ export function Header() {
               >
                 <Phone className="size-4" />
                 {siteConfig.phone}
-              </a>
+              </PhoneLink>
             </div>
           </nav>
         </div>

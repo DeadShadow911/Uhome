@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Phone, Send } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
+import { trackGAEvent, trackYMGoal, trackFBEvent } from "@/components/analytics/Analytics";
+import { PhoneLink } from "@/components/ui/PhoneLink";
 import { usePhoneValidation } from "@/components/forms/PhoneInput";
 
 export function CTASection() {
@@ -30,7 +32,12 @@ export function CTASection() {
       body: formData,
       headers: { Accept: "application/json" },
     });
-    if (response.ok) setSubmitted(true);
+    if (response.ok) {
+      setSubmitted(true);
+      trackGAEvent("generate_lead", { method: "cta_form" });
+      trackYMGoal("zakaz_zvonka");
+      trackFBEvent("Lead", { content_name: "cta_form" });
+    }
   };
 
   return (
@@ -89,13 +96,14 @@ export function CTASection() {
           )}
 
           <div className="mt-8 flex flex-col items-center gap-2 sm:flex-row sm:justify-center">
-            <a
+            <PhoneLink
               href={`tel:${siteConfig.phone.replace(/\s/g, "")}`}
+              location="cta"
               className="inline-flex items-center gap-2 text-white hover:underline"
             >
               <Phone className="size-4" />
               {siteConfig.phone}
-            </a>
+            </PhoneLink>
             <span className="hidden text-white/60 sm:inline">или</span>
             <a
               href={siteConfig.socials.telegram}

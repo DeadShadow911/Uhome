@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, ChevronLeft } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 import Link from "next/link";
+import { trackGAEvent, trackYMGoal, trackFBEvent } from "@/components/analytics/Analytics";
 import { usePhoneValidation } from "@/components/forms/PhoneInput";
 
 type QuickEstimateParams = {
@@ -75,7 +76,12 @@ export function QuickEstimateSection() {
       headers: { Accept: "application/json" },
     });
     setIsSubmitting(false);
-    if (res.ok) setSubmitted(true);
+    if (res.ok) {
+      trackGAEvent("generate_lead", { method: "calculator" });
+      trackYMGoal("kalkulyator_submit");
+      trackFBEvent("Lead", { content_name: "calculator" });
+      setSubmitted(true);
+    }
   };
 
   const canNext = params.area >= 10;

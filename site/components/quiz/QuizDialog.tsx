@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { trackGAEvent, trackYMGoal, trackFBEvent } from "@/components/analytics/Analytics";
 import {
   Dialog,
   DialogContent,
@@ -76,6 +77,9 @@ export function QuizDialog({ children }: { children: React.ReactNode }) {
     setIsSubmitting(false);
     if (response.ok) {
       setSubmitted(true);
+      trackGAEvent("generate_lead", { method: "quiz" });
+      trackYMGoal("quiz_submit");
+      trackFBEvent("Lead", { content_name: "quiz" });
       setTimeout(() => {
         setOpen(false);
         setStep(1);
@@ -87,6 +91,9 @@ export function QuizDialog({ children }: { children: React.ReactNode }) {
 
   const handleOpenChange = (isOpen: boolean) => {
     setOpen(isOpen);
+    if (isOpen) {
+      trackGAEvent("quiz_start", { method: "hero" });
+    }
     if (!isOpen) {
       setTimeout(() => {
         setStep(1);

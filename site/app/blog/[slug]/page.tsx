@@ -6,6 +6,7 @@ import { blogPosts } from "@/lib/mock-data";
 import { siteConfig } from "@/lib/site-config";
 import type { BlogContentBlock } from "@/lib/mock-data";
 import { ArticleLeadForm } from "@/components/forms/ArticleLeadForm";
+import { PhoneLink } from "@/components/ui/PhoneLink";
 
 function ArticleContent({ blocks }: { blocks: BlogContentBlock[] }) {
   return (
@@ -76,7 +77,7 @@ function ArticleContent({ blocks }: { blocks: BlogContentBlock[] }) {
             <ArticleLeadForm subject="UHome: Заявка со статьи «Ремонт квартиры в Гродно»" />
           </div>
           <p className="mt-6 text-center text-white/80 text-sm">
-            Или позвоните: <Link href={`tel:${siteConfig.phone.replace(/\s/g, "")}`} className="font-medium text-white hover:underline">{siteConfig.phone}</Link>
+            Или позвоните: <PhoneLink href={`tel:${siteConfig.phone.replace(/\s/g, "")}`} location="blog" className="font-medium text-white hover:underline">{siteConfig.phone}</PhoneLink>
             {" · "}
             <Link href="/kalkulyator" className="font-medium text-white hover:underline">Быстрый расчёт</Link>
           </p>

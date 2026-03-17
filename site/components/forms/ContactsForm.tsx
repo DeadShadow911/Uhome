@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { siteConfig } from "@/lib/site-config";
 import { usePhoneValidation } from "@/components/forms/PhoneInput";
+import { trackGAEvent, trackYMGoal, trackFBEvent } from "@/components/analytics/Analytics";
 
 export function ContactsForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -27,7 +28,12 @@ export function ContactsForm() {
       body: formData,
       headers: { Accept: "application/json" },
     });
-    if (response.ok) setSubmitted(true);
+    if (response.ok) {
+      trackGAEvent("generate_lead", { method: "contacts" });
+      trackYMGoal("kontakty_form");
+      trackFBEvent("Lead", { content_name: "contacts" });
+      setSubmitted(true);
+    }
   };
 
   if (submitted) {
