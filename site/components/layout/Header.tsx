@@ -61,6 +61,17 @@ export function Header() {
           >
             <img src="/icons/telegram.svg" alt="" className="size-5 shrink-0" aria-hidden />
           </a>
+          {siteConfig.socials.instagram && (
+            <a
+              href={siteConfig.socials.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex min-h-[44px] min-w-[44px] shrink-0 items-center justify-center rounded-lg p-2 text-primary hover:bg-black/5 active:bg-black/10"
+              aria-label="Instagram"
+            >
+              <img src="/icons/instagram.svg" alt="" className="size-5 shrink-0" aria-hidden />
+            </a>
+          )}
         </div>
 
         <nav className="hidden items-center gap-6 lg:flex lg:gap-8">
@@ -129,6 +140,17 @@ export function Header() {
           >
             <img src="/icons/telegram.svg" alt="" className="size-5 brightness-0 invert" aria-hidden />
           </a>
+          {siteConfig.socials.instagram && (
+            <a
+              href={siteConfig.socials.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border-2 border-primary/20 p-2 text-primary transition hover:border-primary/40 hover:bg-primary/5 active:scale-[0.98]"
+              aria-label="Instagram"
+            >
+              <img src="/icons/instagram.svg" alt="" className="size-5" aria-hidden />
+            </a>
+          )}
         </div>
 
         <button

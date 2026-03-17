@@ -4,6 +4,7 @@ import { siteConfig } from "@/lib/site-config";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { StickyCTA } from "@/components/layout/StickyCTA";
+import { Analytics } from "@/components/analytics/Analytics";
 import "./globals.css";
 
 const inter = Inter({
@@ -58,6 +59,7 @@ export default function RootLayout({
         {children}
         <Footer />
         <StickyCTA />
+        <Analytics />
       </body>
     </html>
   );
