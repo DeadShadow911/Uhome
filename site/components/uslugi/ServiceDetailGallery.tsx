@@ -92,8 +92,8 @@ export function ServiceDetailGallery({ service }: Props) {
           </motion.section>
         )}
 
-        {/* Галерея */}
-        {images.length > 0 && (
+        {/* Галерея — только если больше одного фото */}
+        {images.length > 1 && (
           <motion.section {...fadeUp} className="mb-16">
             <h2 className="mb-8 font-heading text-2xl font-bold text-primary sm:text-3xl">
               Фото работ

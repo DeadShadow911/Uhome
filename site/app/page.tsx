@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/sections/Hero";
+import { PricingTiersSection } from "@/components/sections/PricingTiersSection";
 import { TrustBadgesSection } from "@/components/sections/TrustBadgesSection";
 import { QuickEstimateSection } from "@/components/sections/QuickEstimateSection";
 import { QualityBlock } from "@/components/sections/QualityBlock";
@@ -27,6 +28,7 @@ export default function Home() {
     <main className="min-h-screen">
       <Hero />
       <PortfolioSection />
+      <PricingTiersSection />
       <TrustBadgesSection />
       <QuickEstimateSection />
       <QualityBlock />

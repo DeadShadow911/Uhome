@@ -149,11 +149,6 @@ export const services: ServiceItem[] = [
     category: "stroitelstvo",
     images: [
       "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=800&h=600&fit=crop",
-      "https://api.sknebo.ru/uploads/kukhnya_s_vidom_na_les_6d3aa2a610.jpg",
-      "https://api.sknebo.ru/uploads/remont_gostinoj_1_46f19287bc.jpg",
     ],
     fullDescription: `
 Строительство частных домов и коттеджей в Гродно и Гродненской области. Полный цикл от фундамента до сдачи под ключ.
@@ -179,10 +174,6 @@ export const services: ServiceItem[] = [
     category: "stroitelstvo",
     images: [
       "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&h=600&fit=crop",
-      "https://api.sknebo.ru/uploads/khamam_i_banya_v_odnom_dome_db0ba92bc1.jpg",
-      "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1581558140817-0d4a2289518b?w=800&h=600&fit=crop",
     ],
     fullDescription: `
 Строительство бань в Гродно и области. Предлагаем проекты разных размеров и комплектаций.
@@ -204,10 +195,6 @@ export const services: ServiceItem[] = [
     category: "stroitelstvo",
     images: [
       "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1600573472592-401b489a3cdc?w=800&h=600&fit=crop",
     ],
     fullDescription: `
 Строительство гаражей, сараев, хозблоков и других придомовых построек в Гродно и области. Подберём технологию под бюджет и назначение.
@@ -230,11 +217,7 @@ export const services: ServiceItem[] = [
     icon: "Tent",
     category: "stroitelstvo",
     images: [
-      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop",
       "https://images.unsplash.com/photo-1598902108854-10e335adac99?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1558904541-efa843a96f01?w=800&h=600&fit=crop",
     ],
     fullDescription: `
 Строительство беседок, пергол и навесов для машин и зон отдыха. Деревянные, металлокаркасные, комбинированные. Кровля — поликарбонат, профнастил, мягкая черепица или рейки (для перголы).
@@ -260,10 +243,6 @@ export const services: ServiceItem[] = [
     category: "stroitelstvo",
     images: [
       "https://images.unsplash.com/photo-1558904541-efa843a96f01?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800&h=600&fit=crop",
     ],
     fullDescription: `
 Благоустройство придомовой территории в Гродно и области. Делаем участок удобным, аккуратным и защищённым от воды.
