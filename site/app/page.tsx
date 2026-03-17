@@ -11,6 +11,7 @@ import { ReviewsSection } from "@/components/sections/ReviewsSection";
 import { ContractSection } from "@/components/sections/ContractSection";
 import { CTASection } from "@/components/sections/CTASection";
 import { BlogSection } from "@/components/sections/BlogSection";
+import { InstagramSection } from "@/components/sections/InstagramSection";
 
 export const metadata: Metadata = {
   title: "Ремонт квартир в Гродно под ключ | Стоимость 2025 — UHome",
@@ -36,6 +37,7 @@ export default function Home() {
       <AdvantagesSection />
       <ReviewsSection />
       <ContractSection />
+      <InstagramSection />
       <CTASection />
       <BlogSection />
     </main>

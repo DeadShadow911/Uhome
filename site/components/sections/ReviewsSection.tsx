@@ -63,11 +63,12 @@ export function ReviewsSection() {
                 <div className="mt-6 flex items-center gap-4">
                   <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/10 text-sm font-semibold text-primary uppercase">
                     {review.author
-                      .split(/[\s_]/)
+                      .split(/[\s_.]/)
                       .filter(Boolean)
                       .map((s) => s[0])
                       .join("")
-                      .slice(0, 2)}
+                      .slice(0, 2)
+                      .toUpperCase()}
                   </div>
                   <div>
                     <p className="font-semibold text-primary">{review.author}</p>

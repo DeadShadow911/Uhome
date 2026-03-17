@@ -7,6 +7,7 @@ export const siteConfig = {
   socials: {
     telegram: "https://t.me/uhomegrodno",
     whatsapp: "https://wa.me/375447613442",
+    instagram: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "",
   },
   formspree: {
     contacts: process.env.NEXT_PUBLIC_FORMSPREE_CONTACTS || "",
